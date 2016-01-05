@@ -25,7 +25,7 @@ Easily generate imgix URLs inside Statamic.
 
 After you've installed and configured imgix-statamic, you can start using it in your Statamic templates! You can use [any available imgix parameter](https://www.imgix.com/docs/reference), including face detection, automatic format detection (WebP!), and more. Here are some examples to get you started:
 
-### `imgix:image_tag`
+### imgix:image_tag
 
 The simplest way of working with imgix-statamic is using `imgix:image_tag`.
 
@@ -40,7 +40,7 @@ Will output the following HTML:
 ```
 
 
-### `imgix:image_url`
+### imgix:image_url
 
 Makes it easy to generate an image URL in your site.
 
@@ -55,7 +55,7 @@ https://your-source.imgix.net/dogs.png?w=200
 ```
 
 
-### `imgix:responsive_image_tag`
+### imgix:responsive_image_tag
 
 `imgix:responsive_image_tag` lets you easily add responsive images to your site.
 
@@ -74,7 +74,7 @@ Will output the following HTML:
 ```
 
 
-### `imgix:picture_tag`
+### imgix:picture_tag
 
 `imgix:picture_tag` simplifies adding `picture` elements to your site.
 

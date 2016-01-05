@@ -1,0 +1,16 @@
+{
+    "name": "imgix/imgix-statamic",
+    "description": "Easily generate imgix URLs inside Statamic",
+    "require": {
+        "imgix/imgix-php": "^1.0"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^4.8"
+    },
+    "authors": [
+        {
+            "name": "Paul Straw",
+            "email": "paulstraw@paulstraw.com"
+        }
+    ]
+}

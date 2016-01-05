@@ -1,0 +1,6 @@
+name: imgix
+version: 2.0.0
+description: Easily generate imgix URLs inside Statamic.
+addon_url: https://github.com/imgix/imgix-statamic
+developer: imgix
+developer_url: http://imgix.com

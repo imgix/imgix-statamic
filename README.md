@@ -4,6 +4,8 @@
 
 Easily generate imgix URLs inside Statamic.
 
+**Please note that this release of `imgix-statamic` is designed for Statamic `v2.x`. If you are using Statmic `v1.x`, take a peek at [the version 1 releases](https://github.com/imgix/imgix-statamic/releases)**.
+
 * [Installation](#installation)
 * [Usage](#usage)
 * [Meta](#meta)
@@ -11,13 +13,14 @@ Easily generate imgix URLs inside Statamic.
 <a name="installation"></a>
 ## Installation
 
-1. Copy `_add-ons/imgix` into your Statamic installation's `_add-ons` folder.
-2. Copy `_config/add-ons/imgix` into your Statamic installation's `_config/add-ons` folder.
+1. Copy `site/addons/imgix` into your Statamic installation's `site/ddons` folder.
+2. Copy `site/settings/addons/imgix.yaml` into your Statamic installation's `site/settings/addons` folder.
 3. Configure `imgix.yaml`:
     * `source` (Required): The imgix source domain to grab images from.
     * `secure_url_token`: Add this if you want to output signed (secure) image URLs.
     * `use_https`: Whether to use HTTPS URLs.
     * `responsive_resolutions`: The device pixel ratios used to generate `srcset` attributes.
+4. Run `please addons:refresh` to install dependencies.
 
 
 <a name="usage"></a>
@@ -93,7 +96,6 @@ Will output the following HTML:
     <img src="https://your-source.imgix.net/dogs.png?w=200">
 </picture>
 ```
-
 
 
 <a name="meta"></a>

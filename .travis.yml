@@ -5,4 +5,4 @@ php:
 - '5.5'
 - '5.4'
 install:
-  - composer install
+  - 'cd site/addons/Imgix && composer install'

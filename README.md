@@ -95,7 +95,6 @@ Will output the following HTML:
 ```
 
 
-
 <a name="meta"></a>
 ## Meta
 

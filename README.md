@@ -13,7 +13,7 @@ Easily generate imgix URLs inside Statamic.
 <a name="installation"></a>
 ## Installation
 
-1. Copy `site/addons/imgix` into your Statamic installation's `site/ddons` folder.
+1. Copy `site/addons/imgix` into your Statamic installation's `site/addons` folder.
 2. Copy `site/settings/addons/imgix.yaml` into your Statamic installation's `site/settings/addons` folder.
 3. Configure `imgix.yaml`:
     * `source` (Required): The imgix source domain to grab images from.

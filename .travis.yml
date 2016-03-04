@@ -4,5 +4,5 @@ php:
   - '5.6'
   - '5.5'
 install:
-  - 'cd site/addons/Imgix && composer install'
+  - 'cd site/addons/imgix && composer install'
 script: 'echo "Tests pending a harness from Statamic. imgix-php is well-tested though, and that''s there most of imgix-statamic''s logic lives."'

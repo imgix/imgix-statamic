@@ -9,24 +9,61 @@ class ImgixTags extends Tags
 {
     protected $builder;
 
-    protected function buildUrl($params) {
-        $path = array_shift($params);
+    protected function categorizedAttributes() {
+        $attrs = $this->parameters;
 
-        return $this->builder->createURL($path, $params);
+        $categorized_attrs = array(
+            'path' => $attrs['path'],
+            'img_attributes' => array(),
+            'imgix_attributes' => array()
+        );
+
+        unset($attrs['path']);
+
+        while (list($key, $val) = each($attrs)) {
+            $is_img_attr = in_array($key, array('alt', 'longdesc', 'title'));
+            $is_data_attr = strpos($key, 'data-') === 0;
+            $is_aria_attr = strpos($key, 'aria-') === 0;
+
+            if ($is_img_attr || $is_data_attr || $is_aria_attr) {
+                $categorized_attrs['img_attributes'][$key] = $val;
+            } else {
+                $categorized_attrs['imgix_attributes'][$key] = $val;
+            }
+        }
+
+        return $categorized_attrs;
     }
 
-    protected function buildSrcset($params) {
+    protected function buildUrl($categorized_attrs) {
+        return $this->builder->createURL(
+            $categorized_attrs['path'],
+            $categorized_attrs['imgix_attributes']
+        );
+    }
+
+    protected function buildImgAttributes($categorized_attrs) {
+        $img_attributes = $categorized_attrs['img_attributes'];
+
+        $html = '';
+
+        while (list($key, $val) = each($img_attributes)) {
+            $html .= " $key=\"$val\"";
+        }
+
+        return $html;
+    }
+
+    protected function buildSrcset($categorized_attrs) {
         $srcset_values = array();
         $resolutions = $this->getConfig('responsive_resolutions', array(1, 2));
 
         foreach ($resolutions as $resolution) {
-            $srcset_params = $params;
-
             if ($resolution != 1) {
-                $srcset_params['dpr'] = $resolution;
+                $categorized_attrs['imgix_attributes']['dpr'] = $resolution;
             }
 
-            $srcset_value = $this->buildUrl($srcset_params) . ' ' . $resolution . 'x';
+            $srcset_value = $this->buildUrl($categorized_attrs) . ' ' . $resolution . 'x';
 
             array_push($srcset_values, $srcset_value);
         }
@@ -46,44 +83,52 @@ class ImgixTags extends Tags
     }
 
     public function index() {
-        return $this->buildUrl($this->parameters);
+        return $this->buildUrl($this->categorizedAttributes());
     }
 
-    public function imageUrl()
-    {
-        return $this->buildUrl($this->parameters);
+    public function imageUrl() {
+        return $this->buildUrl($this->categorizedAttributes());
     }
 
-    public function imageTag()
-    {
-        return '<img src="' . $this->buildUrl($this->parameters) . '">';
-    }
-
-    public function responsiveImageTag()
-    {
-        $params = $this->parameters;
+    public function imageTag() {
+        $categorized_attrs = $this->categorizedAttributes();
 
         return join('', array(
-            '<img srcset="',
-                $this->buildSrcset($params),
-            '" src="',
-                $this->buildUrl($params),
-            '">'
+            '<img src="',
+                $this->buildUrl($categorized_attrs),
+            '" ',
+                $this->buildImgAttributes($categorized_attrs),
+            '>'
         ));
     }
 
-    public function pictureTag()
-    {
-        $params = $this->parameters;
+    public function responsiveImageTag() {
+        $categorized_attrs = $this->categorizedAttributes();
+
+        return join('', array(
+            '<img srcset="',
+                $this->buildSrcset($categorized_attrs),
+            '" src="',
+                $this->buildUrl($categorized_attrs),
+            '" ',
+                $this->buildImgAttributes($categorized_attrs),
+            '>'
+        ));
+    }
+
+    public function pictureTag() {
+        $categorized_attrs = $this->categorizedAttributes();
 
         return join('', array(
             '<picture>',
                 '<source srcset="',
-                    $this->buildSrcset($params),
+                    $this->buildSrcset($categorized_attrs),
                 '">',
                 '<img src="',
-                    $this->buildUrl($params),
-                '">',
+                    $this->buildUrl($categorized_attrs),
+                '" ',
+                    $this->buildImgAttributes($categorized_attrs),
+                '>',
             '</picture>'
         ));
     }

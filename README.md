@@ -33,13 +33,13 @@ After you've installed and configured imgix-statamic, you can start using it in 
 The simplest way of working with imgix-statamic is using `imgix:image_tag`.
 
 ``` html
-{{ imgix:image_tag path="dogs.png" w="200" rot="10" }}
+{{ imgix:image_tag path="dogs.png" w="200" rot="10" alt="Some dogs!" }}
 ```
 
 Will output the following HTML:
 
 ``` html
-<img src="https://your-source.imgix.net/dogs.png?w=200&rot=10">
+<img src="https://your-source.imgix.net/dogs.png?w=200&rot=10" alt="Some dogs!">
 ```
 
 
@@ -84,7 +84,7 @@ Will output the following HTML:
 `imgix:picture_tag` will generate a `picture` element with a single `source` element and a fallback `img` element. It uses the configured device pixel ratios in the `responsive_resolutions` config variable (which defaults to `[1, 2]`).
 
 ``` html
-{{ imgix:picture_tag path="dogs.png" w="200" }}
+{{ imgix:picture_tag path="dogs.png" w="200" alt="Some dogs!" }}
 ```
 
 Will output the following HTML:
@@ -93,9 +93,20 @@ Will output the following HTML:
 <picture>
     <source srcset="https://your-source.imgix.net/dogs.png?w=200 1x,
                     https://your-source.imgix.net/dogs.png?w=200&dpr=2 2x">
-    <img src="https://your-source.imgix.net/dogs.png?w=200">
+    <img src="https://your-source.imgix.net/dogs.png?w=200" alt="Some dogs!">
 </picture>
 ```
+
+
+#### Pass-through Attributes
+
+Any imgix method that generates an `img` tag (`image_tag`, `responsive_image_tag`, and `picture_tag`) will automatically pass through the following attributes to the tag, if provided:
+
+* `alt`
+* `longdesc`
+* `title`
+* `data-*`
+* `aria-*`
 
 
 <a name="meta"></a>

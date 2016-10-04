@@ -5,6 +5,7 @@ use Imgix\UrlBuilder;
 
 class Plugin_imgix extends Plugin
 {
+    private static $html_attributes = array('accesskey', 'align', 'alt', 'border', 'class', 'contenteditable', 'contextmenu', 'dir', 'height', 'hidden', 'id', 'lang', 'longdesc', 'sizes', 'style', 'tabindex', 'title', 'usemap', 'width');
     protected $builder;
 
     protected function categorized_attributes() {
@@ -12,19 +13,19 @@ class Plugin_imgix extends Plugin
 
         $categorized_attrs = array(
             'path' => $attrs['path'],
-            'img_attributes' => array(),
+            'html_attributes' => array(),
             'imgix_attributes' => array()
         );
 
         unset($attrs['path']);
 
         while (list($key, $val) = each($attrs)) {
-            $is_img_attr = in_array($key, array('alt', 'longdesc', 'title'));
+            $is_html_attr = in_array($key, self::$html_attributes);
             $is_data_attr = strpos($key, 'data-') === 0;
             $is_aria_attr = strpos($key, 'aria-') === 0;
 
-            if ($is_img_attr || $is_data_attr || $is_aria_attr) {
-                $categorized_attrs['img_attributes'][$key] = $val;
+            if ($is_html_attr || $is_data_attr || $is_aria_attr) {
+                $categorized_attrs['html_attributes'][$key] = $val;
             } else {
                 $categorized_attrs['imgix_attributes'][$key] = $val;
             }
@@ -40,12 +41,12 @@ class Plugin_imgix extends Plugin
         );
     }
 
-    protected function build_img_attributes($categorized_attrs) {
-        $img_attributes = $categorized_attrs['img_attributes'];
+    protected function build_html_attributes($categorized_attrs) {
+        $html_attributes = $categorized_attrs['html_attributes'];
 
         $html = '';
 
-        while (list($key, $val) = each($img_attributes)) {
+        while (list($key, $val) = each($html_attributes)) {
             $html .= " $key=\"$val\"";
         }
 
@@ -93,7 +94,7 @@ class Plugin_imgix extends Plugin
             '<img src="',
                 $this->build_url($categorized_attrs),
             '" ',
-                $this->build_img_attributes($categorized_attrs),
+                $this->build_html_attributes($categorized_attrs),
             '>'
         ));
     }
@@ -107,7 +108,7 @@ class Plugin_imgix extends Plugin
             '" src="',
                 $this->build_url($categorized_attrs),
             '" ',
-                $this->build_img_attributes($categorized_attrs),
+                $this->build_html_attributes($categorized_attrs),
             '>'
         ));
     }
@@ -123,7 +124,7 @@ class Plugin_imgix extends Plugin
                 '<img src="',
                     $this->build_url($categorized_attrs),
                 '" ',
-                    $this->build_img_attributes($categorized_attrs),
+                    $this->build_html_attributes($categorized_attrs),
                 '>',
             '</picture>'
         ));

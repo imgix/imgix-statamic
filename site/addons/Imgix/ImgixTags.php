@@ -7,6 +7,7 @@ use Imgix\UrlBuilder;
 
 class ImgixTags extends Tags
 {
+    private static $html_attributes = array('accesskey', 'align', 'alt', 'border', 'class', 'contenteditable', 'contextmenu', 'dir', 'height', 'hidden', 'id', 'lang', 'longdesc', 'sizes', 'style', 'tabindex', 'title', 'usemap', 'width');
     protected $builder;
 
     protected function categorizedAttributes() {
@@ -21,11 +22,11 @@ class ImgixTags extends Tags
         unset($attrs['path']);
 
         while (list($key, $val) = each($attrs)) {
-            $is_img_attr = in_array($key, array('alt', 'longdesc', 'title'));
+            $is_html_attr = in_array($key, self::$html_attributes);
             $is_data_attr = strpos($key, 'data-') === 0;
             $is_aria_attr = strpos($key, 'aria-') === 0;
 
-            if ($is_img_attr || $is_data_attr || $is_aria_attr) {
+            if ($is_html_attr || $is_data_attr || $is_aria_attr) {
                 $categorized_attrs['img_attributes'][$key] = $val;
             } else {
                 $categorized_attrs['imgix_attributes'][$key] = $val;
@@ -42,7 +43,7 @@ class ImgixTags extends Tags
         );
     }
 
-    protected function buildImgAttributes($categorized_attrs) {
+    protected function buildHtmlAttributes($categorized_attrs) {
         $img_attributes = $categorized_attrs['img_attributes'];
 
         $html = '';
@@ -97,7 +98,7 @@ class ImgixTags extends Tags
             '<img src="',
                 $this->buildUrl($categorized_attrs),
             '" ',
-                $this->buildImgAttributes($categorized_attrs),
+                $this->buildHtmlAttributes($categorized_attrs),
             '>'
         ));
     }
@@ -111,7 +112,7 @@ class ImgixTags extends Tags
             '" src="',
                 $this->buildUrl($categorized_attrs),
             '" ',
-                $this->buildImgAttributes($categorized_attrs),
+                $this->buildHtmlAttributes($categorized_attrs),
             '>'
         ));
     }
@@ -127,7 +128,7 @@ class ImgixTags extends Tags
                 '<img src="',
                     $this->buildUrl($categorized_attrs),
                 '" ',
-                    $this->buildImgAttributes($categorized_attrs),
+                    $this->buildHtmlAttributes($categorized_attrs),
                 '>',
             '</picture>'
         ));

@@ -21,17 +21,18 @@ class ImgixTags extends Tags
 
         unset($attrs['path']);
 
-        while (list($key, $val) = each($attrs)) {
-            $is_html_attr = in_array($key, self::$html_attributes);
-            $is_data_attr = strpos($key, 'data-') === 0;
-            $is_aria_attr = strpos($key, 'aria-') === 0;
-
-            if ($is_html_attr || $is_data_attr || $is_aria_attr) {
-                $categorized_attrs['img_attributes'][$key] = $val;
-            } else {
-                $categorized_attrs['imgix_attributes'][$key] = $val;
-            }
-        }
+	    if (is_array($attrs)) {
+		    foreach ($attrs as $key => $val) {
+			    $is_html_attr = in_array($key, self::$html_attributes);
+			    $is_data_attr = strpos($key, 'data-') === 0;
+			    $is_aria_attr = strpos($key, 'aria-') === 0;
+			    if ($is_html_attr || $is_data_attr || $is_aria_attr) {
+				    $categorized_attrs['img_attributes'][$key] = $val;
+			    } else {
+				    $categorized_attrs['imgix_attributes'][$key] = $val;
+			    }
+		    }
+	    }
 
         return $categorized_attrs;
     }
@@ -48,9 +49,12 @@ class ImgixTags extends Tags
 
         $html = '';
 
-        while (list($key, $val) = each($img_attributes)) {
-            $html .= " $key=\"$val\"";
-        }
+	    if (is_array($img_attributes)) {
+		    foreach ($img_attributes as $key => $val) {
+			    $html .= " $key=\"$val\"";
+			    break;
+		    }
+	    }
 
         return $html;
     }

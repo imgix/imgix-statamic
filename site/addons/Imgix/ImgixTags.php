@@ -52,7 +52,6 @@ class ImgixTags extends Tags
 	    if (is_array($img_attributes)) {
 		    foreach ($img_attributes as $key => $val) {
 			    $html .= " $key=\"$val\"";
-			    break;
 		    }
 	    }
 

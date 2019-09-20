@@ -1,3 +1,4 @@
+dist: trusty
 language: php
 php:
 - '7.0'
@@ -5,4 +6,4 @@ php:
 - '5.5'
 install:
   - 'cd site/addons/Imgix && composer install'
-script: 'echo "Tests pending a harness from Statamic. imgix-php is well-tested though, and that''s there most of imgix-statamic''s logic lives."'
+script: 'echo "Tests pending a harness from Statamic. imgix-php is well-tested though, and that''s where most of imgix-statamic''s logic lives."'

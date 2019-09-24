@@ -4,7 +4,7 @@
 
 Easily generate imgix URLs inside Statamic.
 
-**Please note that this release of `imgix-statamic` is designed for Statamic `v2.x`. If you are using Statmic `v1.x`, take a peek at [the version 1 releases](https://github.com/imgix/imgix-statamic/releases)**.
+**Please note that the base branch of `imgix-statamic` is designed for Statamic `v2.x` and that we are no longer actively developing for Statamic `v1.x`. If you are using Statmic `v1.x`, take a peek at [the version 1 branch](https://github.com/imgix/imgix-statamic/tree/v1)**.
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -13,7 +13,7 @@ Easily generate imgix URLs inside Statamic.
 <a name="installation"></a>
 ## Installation
 
-1. Copy `site/addons/imgix` into your Statamic installation's `site/addons` folder.
+1. Copy `site/addons/imgix` into your Statamic installation's `site/addons` folder. Source can be downloaded from the [Statamic Marketplace](https://statamic.com/marketplace/addons/imgix-statamic).
 2. Copy `site/settings/addons/imgix.yaml` into your Statamic installation's `site/settings/addons` folder.
 3. Configure `imgix.yaml`:
     * `source` (Required): The imgix source domain to grab images from.

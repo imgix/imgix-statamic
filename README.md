@@ -1,14 +1,24 @@
-![imgix logo](https://assets.imgix.net/imgix-logo-web-2014.pdf?page=2&fm=png&w=200&h=200)
+<!-- ix-docs-ignore -->
+![imgix logo](https://assets.imgix.net/sdk-imgix-logo.svg)
 
-# imgix-statamic
+`imgix-statamic` is an add-on for integrating [imgix](https://www.imgix.com/) into Statamic sites.
 
-Easily generate imgix URLs inside Statamic.
+[![Statamic Version](https://img.shields.io/badge/statamic-2.1-blue.svg )](https://travis-ci.org/imgix/imgix-python)
+[![Build Status](https://travis-ci.org/imgix/imgix-python.svg?branch=master)](https://travis-ci.org/imgix/imgix-python)
+[![License](https://img.shields.io/github/license/imgix/imgix-statamic)](https://github.com/imgix/imgix-statamic/blob/master/LICENSE.md)
+
+---
+<!-- /ix-docs-ignore -->
+
+- [Installation](#installation)
+- [Usage](#usage)
+    - [imgix:image_tag](#imgiximage_tag)
+    - [imgix:image_url](#imgiximage_url)
+    - [imgix:responsive_image_tag](#imgixresponsive_image_tag)
+    - [imgix:picture_tag](#imgixpicture_tag)
+- [Meta](#meta)
 
 **Please note that the base branch of `imgix-statamic` is designed for Statamic `v2.x` and that we are no longer actively developing for Statamic `v1.x`. If you are using Statmic `v1.x`, take a peek at [the version 1 branch](https://github.com/imgix/imgix-statamic/tree/v1)**.
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [Meta](#meta)
 
 <a name="installation"></a>
 ## Installation

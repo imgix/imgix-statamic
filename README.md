@@ -4,8 +4,8 @@
 `imgix-statamic` is an add-on for integrating [imgix](https://www.imgix.com/) into Statamic sites.
 
 [![Statamic Version](https://img.shields.io/badge/statamic-2.1-blue.svg )](https://statamic.com/marketplace/addons/imgix-statamic)
-[![Build Status](https://travis-ci.org/imgix/imgix-statamic.svg?branch=master)](https://travis-ci.org/imgix/imgix-statamic)
-[![License](https://img.shields.io/github/license/imgix/imgix-statamic)](https://github.com/imgix/imgix-statamic/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/imgix/imgix-statamic.svg?branch=main)](https://travis-ci.org/imgix/imgix-statamic)
+[![License](https://img.shields.io/github/license/imgix/imgix-statamic)](https://github.com/imgix/imgix-statamic/blob/main/LICENSE.md)
 
 ---
 <!-- /ix-docs-ignore -->
@@ -110,4 +110,4 @@ Any imgix method that generates an `img` tag (`image_tag`, `responsive_image_tag
 
 ## Meta
 
-imgix-statamic was made by [imgix](http://imgix.com). It's licensed under the BSD 2-Clause license (see the [license file](https://github.com/imgix/imgix-statamic/blob/master/license.md) for more info).
+imgix-statamic was made by [imgix](http://imgix.com). It's licensed under the BSD 2-Clause license (see the [license file](https://github.com/imgix/imgix-statamic/blob/main/license.md) for more info).

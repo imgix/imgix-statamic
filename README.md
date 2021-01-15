@@ -6,18 +6,20 @@
 [![Statamic Version](https://img.shields.io/badge/statamic-2.1-blue.svg )](https://statamic.com/marketplace/addons/imgix-statamic)
 [![Build Status](https://travis-ci.org/imgix/imgix-statamic.svg?branch=main)](https://travis-ci.org/imgix/imgix-statamic)
 [![License](https://img.shields.io/github/license/imgix/imgix-statamic)](https://github.com/imgix/imgix-statamic/blob/main/LICENSE.md)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimgix%2Fimgix-statamic.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fimgix%2Fimgix-statamic?ref=badge_shield)
 
 ---
 <!-- /ix-docs-ignore -->
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [`imgix:image_tag`](#imgiximagetag)
-  - [`imgix:image_url`](#imgiximageurl)
-  - [`imgix:responsive_image_tag`](#imgixresponsiveimagetag)
-  - [`imgix:picture_tag`](#imgixpicturetag)
-    - [Pass-through Attributes](#pass-through-attributes)
+    * [`imgix:image_tag`](#imgiximage_tag)
+    * [`imgix:image_url`](#imgiximage_url)
+    * [`imgix:responsive_image_tag`](#imgixresponsive_image_tag)
+    * [`imgix:picture_tag`](#imgixpicture_tag)
+        + [Pass-through Attributes](#pass-through-attributes)
 - [Meta](#meta)
+- [License](#license)
 
 **Please note that the base branch of `imgix-statamic` is designed for Statamic `v2.x` and that we are no longer actively developing for Statamic `v1.x`. If you are using Statmic `v1.x`, take a peek at [the version 1 branch](https://github.com/imgix/imgix-statamic/tree/v1)**.
 
@@ -111,3 +113,6 @@ Any imgix method that generates an `img` tag (`image_tag`, `responsive_image_tag
 ## Meta
 
 imgix-statamic was made by [imgix](http://imgix.com). It's licensed under the BSD 2-Clause license (see the [license file](https://github.com/imgix/imgix-statamic/blob/main/license.md) for more info).
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fimgix%2Fimgix-statamic.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fimgix%2Fimgix-statamic?ref=badge_large)

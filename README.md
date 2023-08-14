@@ -1,4 +1,9 @@
 <!-- ix-docs-ignore -->
+> [DEPRECATED]
+> 
+> _This project has reached the end of its development._
+> _Feel free to browse the code, but please use other solutions for integrating imgix into your Statmic projects._
+
 ![imgix logo](https://assets.imgix.net/sdk-imgix-logo.svg)
 
 `imgix-statamic` is an add-on for integrating [imgix](https://www.imgix.com/) into Statamic sites.
